@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Orbitron:wght@400;500;600;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* HSL Values for easy manipulation */
+  --background: 0 0% 3%;
+  --foreground: 0 0% 95%;
+
+  --card: 0 0% 5%;
+  --card-foreground: 0 0% 95%;
+
+  --popover: 0 0% 5%;
+  --popover-foreground: 0 0% 95%;
+
+  --primary: 183 100% 50%; /* Neon Cyan #00f3ff */
+  --primary-foreground: 0 0% 0%;
+
+  --secondary: 283 99% 54%; /* Neon Purple #bc13fe */
+  --secondary-foreground: 0 0% 100%;
+
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 60%;
+
+  --accent: 120 100% 52%; /* Neon Green #0aff0a */
+  --accent-foreground: 0 0% 0%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 0 0% 12%;
+  --input: 0 0% 12%;
+  --ring: 183 100% 50%;
+
+  --radius: 0.25rem;
+  
+  --font-display: 'Orbitron', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary;
+    font-family: var(--font-body);
+    background-image: 
+      radial-gradient(circle at 50% 0%, rgba(188, 19, 254, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 0% 100%, rgba(0, 243, 255, 0.05) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply tracking-wide uppercase;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 10px currentColor;
+  }
+  
+  .border-glow {
+    box-shadow: 0 0 10px -2px currentColor;
+  }
+  
+  .neon-border {
+    @apply border border-primary/50 shadow-[0_0_10px_-4px_rgba(0,243,255,0.5)];
+  }
+
+  .neon-border-purple {
+    @apply border border-secondary/50 shadow-[0_0_10px_-4px_rgba(188,19,254,0.5)];
+  }
+
+  .glass-panel {
+    @apply bg-card/60 backdrop-blur-md border border-white/5;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-black;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/30 rounded-full hover:bg-primary/50 transition-colors;
+}
